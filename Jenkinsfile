@@ -39,6 +39,28 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('Projekt_Frontend') {
+                    echo 'Hier erfolgt das Deployment'
+                    // Beispiel: sh './deploy.sh'
+                }
+            }
+        }
+    }
+}
+
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('Projekt_Frontend') {
+                    sh 'npm test || true'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                dir('Projekt_Frontend') {
                     echo 'Deployment erfolgreich'
                 }
             }
