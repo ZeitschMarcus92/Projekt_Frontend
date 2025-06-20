@@ -14,25 +14,33 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                dir('Projekt_Frontend') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                dir('Projekt_Frontend') {
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test || true'
+                dir('Projekt_Frontend') {
+                    sh 'npm test || true'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deployment erfolgreich'
+                dir('Projekt_Frontend') {
+                    echo 'Deployment erfolgreich'
+                }
             }
         }
     }
